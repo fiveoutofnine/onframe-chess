@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     siteName: 'onframe-chess',
     url: 'https://onframe-chess.vercel.app',
     locale: 'en_US',
-    images: ['/static/og/home.png'],
+    images: ['https://onframe-chess.vercel.app/static/og/home.png'],
   },
   twitter: {
     card: 'summary_large_image',
     creator: '@fiveoutofnine',
-    images: ['/static/og/home.png'],
+    images: ['https://onframe-chess.vercel.app/static/og/home.png'],
   },
 };
 
