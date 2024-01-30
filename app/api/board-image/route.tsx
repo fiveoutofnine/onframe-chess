@@ -26,8 +26,9 @@ export async function GET(req: NextRequest) {
   // ---------------------------------------------------------------------------
 
   const stateSearchParam = req.nextUrl.searchParams.get('state');
-  const [from, to] = req.nextUrl.searchParams.get('whiteMove')?.split('-') ?? ['', ''];
-  const [cpuFrom, cpuTo] = req.nextUrl.searchParams.get('blackMove')?.split('-') ?? ['', ''];
+  const [from, to] = req.nextUrl.searchParams.get('user')?.split('-') ?? ['', ''];
+  const [cpuFrom, cpuTo] = req.nextUrl.searchParams.get('cpu')?.split('-') ?? ['', ''];
+  const gg = req.nextUrl.searchParams.get('gg');
 
   const state = (stateSearchParam ? decodeURIComponent(stateSearchParam) : STARTING_POSITION).split(
     ' ',
@@ -206,7 +207,7 @@ export async function GET(req: NextRequest) {
               lineHeight: 1.5,
             }}
           >
-            Move {state[5]}
+            {gg !== null ? (gg === '1' ? 'You won! - ' : 'You lost. - ') : ''} Move {state[5]}
           </div>
         </div>
       </div>
