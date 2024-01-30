@@ -38,7 +38,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" style={{ background: 'var(--gray1)' }}>
-      <body className={clsx(inter.className, 'relative min-h-screen w-full')}>{children}</body>
+      <body className={clsx(inter.className, 'min-h-screen w-full relative flex flex-col')}>
+        {children}
+      </body>
     </html>
   );
 }
