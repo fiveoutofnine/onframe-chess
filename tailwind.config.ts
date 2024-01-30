@@ -1,3 +1,5 @@
+import type { Config } from 'tailwindcss';
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const radixColors = require('@radix-ui/colors');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -22,20 +24,15 @@ const colors = createPlugin({
 // Tailwind configuration
 // -----------------------------------------------------------------------------
 
-const config = {
+const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      colors: {
-        gray: '#f00',
-      },
-    },
+    extend: {},
   },
   plugins: [colors.plugin],
-  presets: [],
 };
 export default config;
