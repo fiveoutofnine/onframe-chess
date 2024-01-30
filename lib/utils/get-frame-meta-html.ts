@@ -16,18 +16,6 @@ const getFrameMetaHTML = ({
     .map((button, i) => `<meta name="fc:frame:button:${i + 1}" content="${button}">`)
     .join('');
 
-  /* return `<!DOCTYPE html>
-    <html>
-      <head>
-          <title>${title}</title>
-          <meta property="og:title" content="${title}">
-          <meta property="og:image" content="${process.env.BASE_URL}/${imageUrl}">
-          <meta name="fc:frame" content="vNext">
-          <meta name="fc:frame:image" content="${process.env.BASE_URL}/${imageUrl}">
-          <meta name="fc:frame:post_url" content="${process.env.BASE_URL}/${postUrl}">
-          ${buttonsMetadata}
-      </head>
-    </html>`; */
   return `<!DOCTYPE html>
     <html>
       <head>

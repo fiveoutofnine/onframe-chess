@@ -98,7 +98,8 @@ export async function POST(req: NextRequest) {
   const postUrl = !winner
     ? `${process.env.BASE_URL}/api/move?state=${encodeURIComponent(fen)}&page=${newPage}?difficulty=${difficulty}`
     : `${process.env.BASE_URL}/game-over?winner=${winner}`;
-  const imageUrl = `https://fen2image.chessvision.ai/${encodeURIComponent(fen)}`;
+  //const imageUrl = `https://fen2image.chessvision.ai/${encodeURIComponent(fen)}`;
+  const imageUrl = `${process.env.BASE_URL}/api/board-image?state=${encodeURIComponent(fen)}`;
 
   // ---------------------------------------------------------------------------
   // Return game state
