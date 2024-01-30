@@ -11,12 +11,12 @@ const { createPlugin } = require('windy-radix-palette');
 
 const colors = createPlugin({
   colors: {
-    gray: radixColors.gray,
-    red: radixColors.red,
-    yellow: radixColors.yellow,
-    green: radixColors.green,
-    blue: radixColors.blue,
-    orange: radixColors.orange,
+    gray: radixColors.grayDark,
+    red: radixColors.redDark,
+    yellow: radixColors.yellowDark,
+    green: radixColors.greenDark,
+    blue: radixColors.blueDark,
+    orange: radixColors.orangeDark,
   },
 });
 
