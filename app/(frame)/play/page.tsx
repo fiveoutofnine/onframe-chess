@@ -11,10 +11,11 @@ export default function Page() {
         <meta name="fc:frame" content="vNext" />
         {/* TODO */}
         <meta name="fc:frame:image" content="https://fiveoutofnine.com/static/og/home.png" />
-        <meta name="fc:frame:post_url" content={`${process.env.DOMAIN}/api/spawn`} />
-        <meta name="fc:frame:button:1" content="Start game" />
+        <meta name="fc:frame:post_url" content={`${process.env.BASE_URL}/api/start`} />
+        <meta name="fc:frame:button:1" content="Easy" />
+        <meta name="fc:frame:button:2" content="Intermediate" />
+        <meta name="fc:frame:button:3" content="Advanced" />
       </head>
-      <body className="h-screen w-screen flex items-center justify-center"></body>
     </html>
   );
 }
