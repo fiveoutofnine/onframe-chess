@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ['latin'] });
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" style={{ background: 'var(--gray1)' }}>
-      <body className={clsx(inter.className, 'min-h-screen w-full relative flex flex-col')}>
+      <body className={clsx(inter.className, 'relative flex min-h-screen w-full flex-col')}>
         {children}
       </body>
     </html>
