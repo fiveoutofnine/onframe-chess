@@ -76,10 +76,12 @@ export async function POST(req: NextRequest) {
           : normalizedPage;
 
   let winner: 'white' | 'black' | undefined = undefined;
+  let [from, to]: (string | undefined)[] = [undefined, undefined];
+  let [cpuFrom, cpuTo]: (string | undefined)[] = [undefined, undefined];
   // If it wasn't the first move, and the page wasn't changed, it was a move.
   if (!init && newPage === normalizedPage) {
     const move = buttons[buttonIndex - 1];
-    const [from, to] = move.split(' to ');
+    [from, to] = move.split(' to ');
 
     // Play the user's move.
     game.move(from, to);
@@ -87,7 +89,7 @@ export async function POST(req: NextRequest) {
       winner = 'white';
     } else {
       // Play the engine's move.
-      game.aiMove(difficulty);
+      [cpuFrom, cpuTo] = Object.entries(game.aiMove(difficulty))[0] as string[];
       if (game.exportJson().isFinished) {
         winner = 'black';
       }
@@ -98,8 +100,10 @@ export async function POST(req: NextRequest) {
   const postUrl = !winner
     ? `${process.env.BASE_URL}/api/move?state=${encodeURIComponent(fen)}&page=${newPage}?difficulty=${difficulty}`
     : `${process.env.BASE_URL}/game-over?winner=${winner}`;
-  //const imageUrl = `https://fen2image.chessvision.ai/${encodeURIComponent(fen)}`;
-  const imageUrl = `${process.env.BASE_URL}/api/board-image?state=${encodeURIComponent(fen)}`;
+  const imageUrl =
+    `${process.env.BASE_URL}/api/board-image?state=${encodeURIComponent(fen)}` +
+    (from && to ? `&whiteMove=${from}-${to}` : '') +
+    (cpuFrom && cpuTo ? `&blackMove=${cpuFrom}-${cpuTo}` : '');
 
   // ---------------------------------------------------------------------------
   // Return game state
@@ -120,5 +124,9 @@ export async function POST(req: NextRequest) {
 }
 
 export const GET = POST;
+
+// -----------------------------------------------------------------------------
+// Next.js config
+// -----------------------------------------------------------------------------
 
 export const dynamic = 'force-dynamic';
